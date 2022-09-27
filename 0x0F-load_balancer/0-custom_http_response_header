@@ -17,6 +17,7 @@ echo "Ceci n'est pas une page" | sudo tee /var/www/html/error-page.html
 SERVERCONFIG=\
 "server {
         listen 80 default_server;
+        add_header X-Served-By $HOSTNAME;
         listen [::]:80 default_server;
         root /var/www/html;
 
@@ -24,8 +25,6 @@ SERVERCONFIG=\
         index index.html index.htm index.nginx-debian.html;
 
         server_name _;
-
-        add_header X-Served-By $HOSTNAME;
 
         location / {
                 # First attempt to serve request as file, then
