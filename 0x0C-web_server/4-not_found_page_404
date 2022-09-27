@@ -5,6 +5,7 @@ sudo apt-get -y update
 sudo apt -y install nginx
 sudo ufw allow 'Nginx HTTP'
 sudo chown -R "$USER:$USER" /var/www/html/
+echo 'Hello World!' | sudo tee /var/www/html/index.html
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/error-page.html
 SERVERCONFIG=\
 "server {
@@ -17,10 +18,12 @@ SERVERCONFIG=\
 
         server_name _;
 
+        add_header X-Served-By $HOSTNAME;
+
         location / {
                 # First attempt to serve request as file, then
                 # as directory, then fall back to displaying a 404.
-                try_files \$uri \$uri/ =404;
+                try_files $uri $uri/ =404;
         }
 
         error_page 404 /error-page.html;
@@ -34,4 +37,4 @@ SERVERCONFIG=\
         }
 }"
 echo "$SERVERCONFIG" | sudo tee /etc/nginx/sites-enabled/default 
-sudo service nginx start
+sudo service nginx restart
