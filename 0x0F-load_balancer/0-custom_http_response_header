@@ -25,6 +25,8 @@ SERVERCONFIG=\
 
         server_name _;
 
+        add_header X-Served-By $HOSTNAME;
+
         location / {
                 # First attempt to serve request as file, then
                 # as directory, then fall back to displaying a 404.
