@@ -4,14 +4,14 @@
 #+  Distribute requests using a roundrobin algorithm
 #+   Make sure that HAproxy can be managed via an init script
 
-sudo apt-get -y update
-sudo apt-get -y upgrade
+apt-get -y update
+apt-get -y upgrade
 
 apt-get -y install software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.5
 apt-get -y update
 
-sudo apt-get -y install haproxy
+apt-get -y install haproxy
 HAPROXYCONFIG="
 frontend haproxy-main
         bind *:80
@@ -25,5 +25,5 @@ backend task-servers
 "
 
 cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
-sudo echo "$HAPROXYCONFIG" >> /etc/haproxy/haproxy.cfg
-sudo systemctl restart haproxy.service
+echo "$HAPROXYCONFIG" >> /etc/haproxy/haproxy.cfg
+service haproxy restart
