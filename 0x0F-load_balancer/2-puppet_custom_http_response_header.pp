@@ -3,8 +3,7 @@
 exec { 'command':
   command  => 'apt-get -y update;
   apt -y install nginx;
-  ufw allow "Nginx HTTP";
-  sed -i "s/server_name _;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default;
+  sudo sed -i "s/server_name _;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default;
   service nginx restart',
   provider => shell,
 }
