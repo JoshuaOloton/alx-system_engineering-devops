@@ -50,9 +50,8 @@ frontend haproxy-main
 backend task_servers
         balance roundrobin
         server 10718-web-01 3.229.113.226:80
-        server 10718-web-02 44.200.142.76:80"
+        server 10718-web-02 44.200.142.76:80
+"
 
 echo "$HAPROXYCONFIG" | sudo tee /etc/haproxy/haproxy.cfg
-sudo service nginx restart
-
-
+sudo systemctl restart haproxy.service
