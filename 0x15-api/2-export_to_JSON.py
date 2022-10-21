@@ -19,4 +19,3 @@ if __name__ == "__main__":
                 "completed": todo.get("completed"),
                 "username": username
             } for todo in todos]}, file)
-

@@ -15,6 +15,6 @@ if __name__ == "__main__":
     completed = list(filter(lambda x: x.get('completed'), todos))
 
     empName = users.get("name")
-    print("Employee {} is done with({}/{}):".format(
+    print("Employee {} is done with tasks({}/{}):".format(
         empName, len(completed), len(todos)))
     [print("\t {}".format(todo.get('title'))) for todo in completed]
