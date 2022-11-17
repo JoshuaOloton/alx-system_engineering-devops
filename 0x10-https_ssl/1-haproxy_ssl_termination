@@ -7,6 +7,8 @@ global
         user haproxy
         group haproxy
         daemon
+        option forwardfor
+        option http-server-close
 
         # Default SSL material locations
         ca-base /etc/ssl/certs
@@ -36,11 +38,11 @@ defaults
 frontend thekings.tech-http
         bind *:80
         option forwardfor
-        default_backend task_servers
+        default_backend thekings.tech-backend
 
 frontend thekings.tech-https
-        bind *:443 ssl crt /etc/haproxy/certs/www.thekings.tech
-        reqadd X-Forwarded-Proto:\ https
+        bind *:443 ssl crt /etc/haproxy/certs/www.thekings.tech.pem
+        http-request add-header X-Forwarded-Proto https
         acl letsencrypt-acl path_beg /.well-known/acme-challenge/
         use_backend letsencrypt-backend if letsencrypt-acl
         default_backend thekings.tech-backend
