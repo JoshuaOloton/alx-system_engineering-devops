@@ -1,0 +1,13 @@
+[34m
+* Datadog Agent 7 install script v1.11.0
+[0m
+[34m
+* Installing apt-transport-https, curl and gnupg
+[0m
+Get:1 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Hit:2 http://archive.ubuntu.com/ubuntu focal InRelease
+Get:3 https://download.docker.com/linux/ubuntu focal InRelease [57.7 kB]
+Get:4 http://archive.ubuntu.com/ubuntu focal-updates InRelease [114 kB]
+Get:5 http://security.ubuntu.com/ubuntu focal-security/main amd64 Packages [1861 kB]
+Get:6 https://download.docker.com/linux/ubuntu focal/stable amd64 Packages [20.9 kB]
+Get:7 http://archive.ubuntu.com/ubuntu focal-backports InRelease [108 kB]
