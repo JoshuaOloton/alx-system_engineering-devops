@@ -58,7 +58,7 @@ file { 'Nginx default config file':
 }
 
 exec { 'restart service':
-  command => 'service nginx restart',
+  command => 'service nginx restart',[]
   path    => '/usr/bin:/usr/sbin:/bin',
 }
 
