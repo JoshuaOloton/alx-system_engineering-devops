@@ -12,4 +12,4 @@ if __name__ == "__main__":
     users = requests.get("{}/users/{}".format(base_url, id)).json()
     print("Employee {} is done with tasks({}/{}):".
           format(users.get("name"), len(completed), len(todos)))
-    [print("\t {}".format(todo.get('title'))) for todo in todos]
+    [print("\t {}".format(todo.get('title'))) for todo in completed]
